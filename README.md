@@ -1,27 +1,23 @@
 # portmaster-nix
 
-[![CI](https://github.com/Daaboulex/portmaster-nix/actions/workflows/ci.yml/badge.svg)](https://github.com/Daaboulex/portmaster-nix/actions/workflows/ci.yml)
-[![License](https://img.shields.io/github/license/Daaboulex/portmaster-nix)](./LICENSE)
-[![NixOS](https://img.shields.io/badge/NixOS-unstable-78C0E8?logo=nixos&logoColor=white)](https://nixos.org)
-[![Last commit](https://img.shields.io/github/last-commit/Daaboulex/portmaster-nix)](https://github.com/Daaboulex/portmaster-nix/commits)
-[![Stars](https://img.shields.io/github/stars/Daaboulex/portmaster-nix?style=flat)](https://github.com/Daaboulex/portmaster-nix/stargazers)
-[![Issues](https://img.shields.io/github/issues/Daaboulex/portmaster-nix)](https://github.com/Daaboulex/portmaster-nix/issues)
+<!-- BEGIN generated:badges -->
+[![NixOS unstable](https://img.shields.io/badge/NixOS-unstable-78C0E8?logo=nixos&logoColor=white)](https://nixos.org)
+[![License: GPL-3.0](https://img.shields.io/badge/License-GPL--3.0-blue.svg)](./LICENSE)
+<!-- END generated:badges -->
 
 NixOS packaging for [Portmaster](https://safing.io/portmaster/) — the free and open-source application firewall by [Safing](https://safing.io).
 
 This flake builds Portmaster **v2.1.7 from source** (Go core + Rust/Tauri desktop + Angular UI) and provides a NixOS module with full systemd integration and security hardening.
 
+<!-- BEGIN generated:upstream -->
 ## Upstream
 
-This is a **Nix packaging wrapper** — not the original project. All credit for Portmaster goes to:
-
-- **Author**: [Safing GmbH](https://safing.io)
-- **Repository**: [github.com/safing/portmaster](https://github.com/safing/portmaster)
-- **License**: [GPL-3.0-only](https://github.com/safing/portmaster/blob/master/LICENSE)
-
-> **Note**: This is a community packaging effort. This flake will be deprecated once Portmaster lands in nixpkgs. A previous v1 packaging PR ([#264454](https://github.com/NixOS/nixpkgs/pull/264454)) exists but is outdated — this flake packages v2 from source.
-
-Tracks GitHub releases. Twice-weekly upstream check (Mon + Thu, 12:00 UTC).
+| | |
+|---|---|
+| **Project** | [safing/portmaster](https://github.com/safing/portmaster) |
+| **License** | AGPL-3.0 |
+| **Tracked** | GitHub releases |
+<!-- END generated:upstream -->
 
 ## Documentation
 
@@ -39,6 +35,33 @@ For long-form references beyond the README sections below, see:
 | `portmaster-core` | Go | Firewall engine — DNS resolver, network filter, threat intelligence |
 | `portmaster` (desktop) | Rust / Tauri | Native desktop app with system tray integration |
 | `portmaster-ui` | Angular | Web UI served by the core at `127.0.0.1:817` |
+
+<!-- BEGIN generated:installation -->
+## Installation
+
+Add as a flake input:
+
+```nix
+{
+  inputs.portmaster = {
+    url = "github:Daaboulex/portmaster-nix";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
+}
+```
+
+Then add the overlay:
+
+```nix
+nixpkgs.overlays = [ inputs.portmaster.overlays.default ];
+```
+
+Import the NixOS module:
+
+```nix
+imports = [ inputs.portmaster.nixosModules.default ];
+```
+<!-- END generated:installation -->
 
 ## Usage
 
@@ -171,6 +194,15 @@ nix build .#portmaster            # composed Tauri desktop + core + UI
 
 CI runs the same chain twice weekly via `.github/workflows/update.yml`. See [`docs/BUILD.md`](docs/BUILD.md) for the full operator reference (update contract, troubleshooting, manual service control).
 
+<!-- BEGIN generated:options -->
+<!-- END generated:options -->
+
 ## License
 
 This packaging flake is [GPL-3.0-only](./LICENSE) licensed (matches upstream). Upstream Portmaster is [GPL-3.0-only](https://github.com/safing/portmaster/blob/master/LICENSE) by Safing GmbH.
+
+<!-- BEGIN generated:footer -->
+---
+
+*Maintained as part of the [Daaboulex](https://github.com/Daaboulex) NixOS ecosystem.*
+<!-- END generated:footer -->
