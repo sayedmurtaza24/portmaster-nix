@@ -195,6 +195,9 @@ nix build .#portmaster            # composed Tauri desktop + core + UI
 CI runs the same chain twice weekly via `.github/workflows/update.yml`. See [`docs/BUILD.md`](docs/BUILD.md) for the full operator reference (update contract, troubleshooting, manual service control).
 
 <!-- BEGIN generated:options -->
+## Options
+
+See [docs/OPTIONS.md](docs/OPTIONS.md) for the full options reference.
 <!-- END generated:options -->
 
 ## License
