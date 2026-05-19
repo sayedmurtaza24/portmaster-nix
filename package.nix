@@ -56,11 +56,11 @@
   # Overridable version metadata — defaults are the stable release.
   # Names prefixed with `portmaster` to avoid callPackage auto-fill collisions
   # with pkgs.src and pkgs.version.
-  portmasterVersion ? "2.1.7",
+  portmasterVersion ? "2.1.19",
   portmasterSrc ? null,
-  npmDepsHash ? "sha256-yoEGoeXcJIGjjD+r+dQoAdeY7mX3VWOt3LAAO+B0bhA=",
-  cargoHash ? "sha256-q3kgXM06yEuEf+VyywpCHmUGt43RRdSFzTaVlU/jfjc=",
-  vendorHash ? "sha256-uPo1tRUfl4kY1sMlLoc0y6ctygRN5MJPrR5TTgERk6U=",
+  npmDepsHash ? "sha256-g7hu6IQCPYRuJaeebydSlIx1hDZGNU9v5ZjecWgB7as=",
+  cargoHash ? "sha256-irAfRgtw7JNJZLCIJdCwfQZ0LnvxTY/IOH4hMkortKY=",
+  vendorHash ? "sha256-22sIbmpbgYtOwrnxcrKfksgbyqaFRH5DZ/UNXr8723I=",
 }:
 
 let
@@ -74,7 +74,7 @@ let
         owner = "safing";
         repo = "portmaster";
         tag = "v${version}";
-        hash = "sha256-DUDfeSdIH3e5yx1KKW6h6+HKKQ3WNllsdairjAkTdJs=";
+        hash = "sha256-c9c8Tmj/iddPVwCS11k0Mf3GwMWG6FFiGM0ayEpAl9Y=";
       };
 
   # Angular web UI — main dashboard (served by portmaster-core) and splash screen (embedded in Tauri)
